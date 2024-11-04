@@ -36,7 +36,7 @@ def add_header(response):
     return response
 
 
-@appbuilder.app.errorhandler()
+@appbuilder.app.errorhandler(500)
 def page_not_found(e):
     return (
         render_template(

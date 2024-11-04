@@ -67,7 +67,10 @@ class Config:
     # Roles
     FAB_ROLES = {
         "Public": [
-            ["MyIndexView", "menu_access"],
+            ["MyIndexView", "can_this_form_get"],
+            ["MyIndexView", "can_this_form_post"],
+            ["MyIndexView", "can_index"],
+            ["MyIndexView", "can_contact"],
         ],
         "BaseUser": [
             ["UserDBModelView", "can_userinfo"],
@@ -79,6 +82,10 @@ class Config:
             ["UserInfoEditView", "can_this_form_get"],
             ["UserInfoEditView", "can_this_form_post"],
             ["HomeView", "can_user"],
+            ["MyIndexView", "can_this_form_get"],
+            ["MyIndexView", "can_this_form_post"],
+            ["MyIndexView", "can_index"],
+            ["MyIndexView", "can_contact"],
         ],
         "SuperUser": [
             ["List Users", "menu_access"],
@@ -89,11 +96,10 @@ class Config:
             ["UserDBModelView", "resetpasswords"],
             ["ResetPasswordView", "can_this_form_get"],
             ["ResetPasswordView", "can_this_form_post"],
-            ["Graph View", "menu_access"],
-            ["GraphView", "can_landing"],
-            ["GraphView", "can_this_form_get"],
-            ["GraphView", "can_this_form_post"],
-            ["GraphView", "can_show_graph"],
+            ["MyIndexView", "can_this_form_get"],
+            ["MyIndexView", "can_this_form_post"],
+            ["MyIndexView", "can_index"],
+            ["MyIndexView", "can_contact"],
         ],
     }
 
