@@ -32,6 +32,7 @@ services:
       - site-network
     ports:
       - 8000:8000
+    restart: "always"
     secrets:
       - mysql_user_password
     env_file: .env
@@ -40,21 +41,26 @@ services:
 
   certbot:
     image: certbot/dns-cloudflare
+    container_name:
+      certbot
     volumes:
       - certbot_etc:/etc/letsencrypt
       - /root/cloudflare.ini:/root/cloudflare.ini
+    networks:
+      - site-network
     command: >-
       certonly --dns-cloudflare
       --dns-cloudflare-credentials /root/cloudflare.ini
       -m breenc96@gmail.com
-      --force-renewal
+      --keep-until-expiring
       --agree-tos --no-eff-email
       -d conorbreen.com
 
   nginx:
     image: nginx:latest
+    container_name:
+      nginx
     volumes:
-      - /home/conor/personal-site/app:/var/www/app
       - /etc/nginx:/etc/nginx
       - /usr/share/nginx/:/usr/share/nginx
       - /var/log/nginx:/var/log/nginx
@@ -62,14 +68,9 @@ services:
     depends_on:
       - prod-site
     ports:
-      - "80:80"
-      - "433:443"
+      - 80:80
+      - 433:443
     restart: "always"
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "10"
     networks:
       - site-network
 
