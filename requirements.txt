@@ -16,15 +16,16 @@ babel==2.15.0
     # via flask-babel
 blinker==1.8.2
     # via flask-mail
+cffi==1.17.1
+    # via cryptography
 click==8.1.7
     # via
     #   flask
     #   flask-appbuilder
 colorama==0.4.6
-    # via
-    #   click
-    #   flask-appbuilder
-    #   pytest
+    # via flask-appbuilder
+cryptography==43.0.3
+    # via -r requirements.in
 deprecated==1.2.14
     # via limits
 dnspython==2.6.1
@@ -67,6 +68,8 @@ flask-wtf==1.2.1
     # via flask-appbuilder
 greenlet==3.0.3
     # via sqlalchemy
+gunicorn==23.0.0
+    # via -r requirements.in
 idna==3.7
     # via email-validator
 importlib-resources==6.4.0
@@ -106,13 +109,12 @@ marshmallow-sqlalchemy==0.28.2
     # via flask-appbuilder
 mdurl==0.1.2
     # via markdown-it-py
-numpy==1.26.4
-    # via scipy
 ordered-set==4.1.0
     # via flask-limiter
 packaging==24.0
     # via
     #   apispec
+    #   gunicorn
     #   limits
     #   marshmallow
     #   marshmallow-sqlalchemy
@@ -121,12 +123,16 @@ pluggy==1.5.0
     # via pytest
 prison==0.2.1
     # via flask-appbuilder
+pycparser==2.22
+    # via cffi
 pygments==2.18.0
     # via rich
 pyjwt==2.8.0
     # via
     #   flask-appbuilder
     #   flask-jwt-extended
+pymysql==1.1.1
+    # via -r requirements.in
 pytest==8.2.1
     # via -r requirements.in
 python-dateutil==2.9.0.post0
@@ -147,8 +153,6 @@ rpds-py==0.18.1
     # via
     #   jsonschema
     #   referencing
-scipy==1.13.1
-    # via -r requirements.in
 six==1.16.0
     # via
     #   prison
@@ -172,7 +176,6 @@ typing-extensions==4.12.0
     #   limits
 werkzeug==2.3.8
     # via
-    #   -r requirements.in
     #   flask
     #   flask-appbuilder
     #   flask-jwt-extended

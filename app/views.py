@@ -1,8 +1,36 @@
-from flask import g, render_template, redirect, url_for
-from flask_appbuilder import BaseView, has_access, expose
+from flask import g, render_template, redirect, url_for, flash, request
+from flask_appbuilder import BaseView, has_access, expose, SimpleFormView
+from flask_appbuilder.widgets import ListWidget
 from flask_login import current_user
 
 from app import appbuilder
+from app.forms import ContactForm
+from app.utils import send_email
+
+
+class ContactWidget(ListWidget):
+    template = "index.html"
+
+
+class PublicView(SimpleFormView):
+    route_base = "/"
+    edit_widget = ContactWidget
+
+    @expose("/", methods=['GET', 'POST'])
+    def index(self):
+        form = ContactForm()
+
+    #
+    # @expose("/contact/", methods=['GET', 'POST'])
+    # def contact(self):
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+        name, email, message = (text if text else "<blank>" for text in [name, email, message])
+        send_email(name, email, message)
+        flash("Email sent", "info")
+        return self.render_template("index.html", form=form)
+        # return redirect(url_for("PublicView.index"))
 
 
 class HomeView(BaseView):

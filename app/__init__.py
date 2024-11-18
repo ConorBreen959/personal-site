@@ -62,10 +62,11 @@ def create_app():
 
 def register_views():
     from app.views import (
+        PublicView,
         HomeView,
         HealthView,
     )
-
+    appbuilder.add_view_no_menu(PublicView())
     appbuilder.add_view_no_menu(HomeView())
     appbuilder.add_view_no_menu(HealthView())
     appbuilder.security_cleanup()
