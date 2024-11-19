@@ -47,8 +47,10 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Config for Flask-WTF Recaptcha necessary for user registration
+    RECAPTCHA_USE_SSL = False
     RECAPTCHA_PUBLIC_KEY = os.environ.get("RECAPTCHA_PUBLIC_KEY")
     RECAPTCHA_PRIVATE_KEY = os.environ.get("RECAPTCHA_PRIVATE_KEY")
+    RECAPTCHA_OPTIONS = {"theme": "white"}
 
     # API access token expiry
     JWT_ACCESS_TOKEN_EXPIRES = 10
