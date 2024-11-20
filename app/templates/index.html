@@ -225,18 +225,18 @@
 						<p>If you'd like to get in touch with me for any reason, you can fill in the form<br>below and I'd be very happy to hear from you.</p>
 						<div class="row">
 							<div class="col-8 col-12-small">
-								<form method="post" action="{{ url_for("PublicView.index") }}">
+								<form method="post" action="{{ url_for("PublicView.contact")}}">
                                     {{ form.hidden_tag() }}
 									<div class="row gtr-uniform gtr-50">
-										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
+										<div class="col-6 col-12-xsmall"><input type="text" name="{{ form["name"].name }}" id="{{ form["name"].id }}" placeholder="{{ form["name"].label.text }}" /></div>
+										<div class="col-6 col-12-xsmall"><input type="email" name="{{ form["email"].name }}" id="{{ form["email"].id }}" placeholder="{{ form["email"].label.text }}" /></div>
+										<div class="col-12"><textarea name="{{ form["message"].name }}" id="{{ form["message"].id }}" placeholder="{{ form["message"].label.text }}" rows="4"></textarea></div>
 									</div>
                                     <br>
-				    {{ form.recaptcha }}
+                				    {{ form.recaptcha }}
                                     <br>
                                     <ul class="actions">
-                                        <li><input id="submit" type="submit" value="Send Message" /></li>
+                                        <li><input id="{{ form["submit"].id }}" type="submit" value="Send Message" /></li>
                                     </ul>
 								</form>
 							</div>

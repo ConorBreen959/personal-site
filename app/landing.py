@@ -7,4 +7,4 @@ class MyIndexView(IndexView):
 
     @expose("/index")
     def index(self):
-        return redirect(url_for("PublicView.index"))
+        return redirect(url_for("PublicView.contact"))
