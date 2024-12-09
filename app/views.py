@@ -24,8 +24,6 @@ class PublicView(BaseView):
             email = request.form.get("email")
             message = request.form.get("message")
             captcha = request.form.get("recaptcha")
-            print(captcha)
-            print(name)
             name, email, message = (text if text else "<blank>" for text in [name, email, message])
             send_email(name, email, message)
             flash("Email sent", "info")
