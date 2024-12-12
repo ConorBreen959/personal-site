@@ -22,7 +22,7 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh ${{ secrets.USER }}@${{ secrets.HOST }} << ENDSSH
+          ssh -p ${{ secrets.PORT }} ${{ secrets.USER }}@${{ secrets.HOST }} << ENDSSH
           cd ${{ secrets.APP_PATH }}
           git pull origin master
           sudo docker compose down ${{ secrets.APP_NAME }}
