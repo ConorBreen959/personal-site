@@ -2,6 +2,11 @@
 
 {% block body %}
 	<body class="is-preload">
+        {% block messages %}
+            {% include 'appbuilder/flash.html' %}
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
 
 		<!-- Header -->
 			<header id="header">
@@ -30,9 +35,9 @@
 						<header class="major">
 							<h2>About Me</h2>
 						</header>
-						<p>Experienced bioinformatician with a passion for my field and a keen interest in genomics and data science. My training started with genetics and progressed to bioinformatics, and I have since found great fulfillment in solving biological questions through computational methods.</p>
-                        <p>I have strong data analysis and software development skills using R and Python, as well as workflow automation using Snakemake and Nextflow. I also have strong expertise in genomics and molecular biology, including cancer genomics.</p>
-                        <p>I am currently working as operational bioinformatician at Zinto Ltd, an equine genetics company. In this role I have initiated and led several major projects including an overhaul of the current bioinformatics codebase and the introduction of a new LIMS system. I’m also responsible for day-to-day analysis of genetic data and for curation of the company’s large genetic database.</p>
+                        <p>I'm an experienced bioinformatician with a passion for my field and a keen interest in genomics and data science. I hold a master's in bioinformatics, and I have been working as a bioinformatician for a number of years with a focus on genomic pipeline development for commercial testing, research translation, as well as process and data infrastructure.</p>
+                        <p>I have strong data analysis and software development skills using R and Python, as well as workflow automation using Snakemake and Nextflow. I also have strong expertise in molecular biology and genomics, including cancer genomics and current NGS technologies.</p>
+                        <p>I consider myself a lifelong learner with an aptitude for problem-solving. I'm largely self-taught in most of my computational and data analysis skills. I'm most passionate about applying this skill to achieving a meaningful goal, advancing human health, and improving lives where possible.</p>
 						<ul class="actions">
 							<li><a href="#personal-projects" class="button">Learn More</a></li>
 						</ul>
@@ -88,7 +93,7 @@
                     <section id="experience">
                         <h2>Experience</h2>
                         <div class="row">
-                            <div class="col-sm-3 border-right">
+                            <div class="col-md-4 border-right">
                                 <h4><strong>Feb 2021 - Present</strong></h4>
                                 <h5><strong>Zinto Ltd</strong></h5>
                             </div>
@@ -98,12 +103,12 @@
                                     <li>Driving force behind introduction & implementation of the LIMS system; current project owner.</li>
                                     <li>Led the overhauling of existing bioinformatics workflow into a standardised form based on Snakemake; involved an almost total rewrite & implementation of several key upgrades.</li>
                                     <li>Ongoing Linux server optimization & management.</li>
-                                    <li>Translation of research outputs & integration into bioinformatic analysis workflows as part of product development.</li>
+                                    <li>Translation of research outputs into bioinformatic analysis workflows as part of product development.</li>
                                     <li>Devising and implementing novel solutions for genetic testing process and data infrastructure.</li>
                                     <li>Overhauling & management of the genetic database.</li>
                                 </ul>
                             </div>
-                            <div class="col-sm-3 border-right">
+                            <div class="col-md-4 border-right">
                                 <h4><strong>Oct 2020 - Feb 2021</strong></h4>
                                 <h5><strong>Enfer Group</strong></h5>
                             </div>
@@ -115,7 +120,7 @@
                                     <li>Co-ordinating within the Data Analytics department to make decisions that impact lab operations, informed by best clinical practice and the public health context.</li>
                                 </ul>
                             </div>
-                            <div class="col-sm-3 border-right">
+                            <div class="col-md-4 border-right">
                                 <h4><strong>May 2018 - Aug 2019</strong></h4>
                                 <h5><strong>BMS</strong></h5>
                             </div>
@@ -225,18 +230,19 @@
 						<p>If you'd like to get in touch with me for any reason, you can fill in the form<br>below and I'd be very happy to hear from you.</p>
 						<div class="row">
 							<div class="col-8 col-12-small">
-								<form method="post" action="{{ url_for("PublicView.index") }}">
+								<form method="post" action="{{ url_for("PublicView.contact")}}">
                                     {{ form.hidden_tag() }}
 									<div class="row gtr-uniform gtr-50">
-										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
+                                        <input type="hidden" name="csrf_token" value="{{ form.csrf_token() }}"/>
+										<div class="col-6 col-12-xsmall"><input type="text" name="{{ form["name"].name }}" id="{{ form["name"].id }}" placeholder="{{ form["name"].label.text }}" /></div>
+										<div class="col-6 col-12-xsmall"><input type="email" name="{{ form["email"].name }}" id="{{ form["email"].id }}" placeholder="{{ form["email"].label.text }}" /></div>
+										<div class="col-12"><textarea name="{{ form["message"].name }}" id="{{ form["message"].id }}" placeholder="{{ form["message"].label.text }}" rows="4"></textarea></div>
 									</div>
                                     <br>
-                                    {{ form.recaptcha }}
+                				    {{ form.recaptcha }}
                                     <br>
                                     <ul class="actions">
-                                        <li><input id="contact" type="submit" value="Send Message" /></li>
+                                        <li><input id="{{ form["submit"].id }}" type="submit" value="Send Message" /></li>
                                     </ul>
 								</form>
 							</div>
