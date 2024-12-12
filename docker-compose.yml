@@ -56,23 +56,6 @@ services:
       --agree-tos --no-eff-email
       -d conorbreen.com
 
-  nginx:
-    image: nginx:latest
-    container_name:
-      nginx
-    volumes:
-      - /etc/nginx:/etc/nginx
-      - /usr/share/nginx/:/usr/share/nginx
-      - /var/log/nginx:/var/log/nginx
-      - /etc/letsencrypt:/etc/letsencrypt
-    depends_on:
-      - prod-site
-    ports:
-      - 80:80
-      - 433:443
-    restart: "always"
-    networks:
-      - site-network
 
 secrets:
   mysql_root_password:
