@@ -12,7 +12,7 @@ jobs:
 
       - name: Set up SSH key
         run: |
-          apt-get install openssh-client -y
+          sudo apt-get install openssh-client -y
           mkdir -p ~/.ssh
           eval $(ssh-agent -s)
           echo "${{ secrets.PRIVATE_SSH_KEY }}" > ~/.ssh/id_rsa
@@ -25,7 +25,7 @@ jobs:
           ssh ${{ secrets.USER }}@${{ secrets.HOST }} << ENDSSH
           cd ${{ secrets.APP_PATH }}
           git pull origin master
-          docker compose down ${{ secrets.APP_NAME }}
-          docker compose build
-          docker compose up -d
+          sudo docker compose down ${{ secrets.APP_NAME }}
+          sudo docker compose build
+          sudo docker compose up -d
           ENDSSH
