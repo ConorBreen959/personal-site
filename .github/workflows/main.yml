@@ -23,6 +23,7 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -p ${{ secrets.PORT }} ${{ secrets.USER }}@${{ secrets.HOST }} << ENDSSH
+          eval $(ssh-agent -s)
           cd ${{ secrets.APP_PATH }}
           git pull origin main
           docker compose down ${{ secrets.APP_NAME }}
