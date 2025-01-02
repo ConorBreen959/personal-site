@@ -233,9 +233,8 @@
 								<form method="post" action="{{ url_for("PublicView.contact")}}">
                                     {{ form.hidden_tag() }}
 									<div class="row gtr-uniform gtr-50">
-                                        <input type="hidden" name="csrf_token" value="{{ form.csrf_token() }}"/>
-										<div class="col-6 col-12-xsmall"><input type="text" name="{{ form["name"].name }}" id="{{ form["name"].id }}" placeholder="{{ form["name"].label.text }}" /></div>
-										<div class="col-6 col-12-xsmall"><input type="email" name="{{ form["email"].name }}" id="{{ form["email"].id }}" placeholder="{{ form["email"].label.text }}" /></div>
+										<div class="col-6 col-12-xsmall"><input type="text" name="{{ form["name"].name }}" id="{{ form["name"].id }}" placeholder="{{ form["name"].label.text }}" ></div>
+										<div class="col-6 col-12-xsmall"><input type="email" name="{{ form["email"].name }}" id="{{ form["email"].id }}" placeholder="{{ form["email"].label.text }}" ></div>
 										<div class="col-12"><textarea name="{{ form["message"].name }}" id="{{ form["message"].id }}" placeholder="{{ form["message"].label.text }}" rows="4"></textarea></div>
 									</div>
                                     <br>
