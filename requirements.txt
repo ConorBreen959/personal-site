@@ -67,6 +67,8 @@ flask-wtf==1.2.1
     # via flask-appbuilder
 greenlet==3.0.3
     # via sqlalchemy
+gunicorn==23.0.0
+    # via -r .\requirements.in
 idna==3.7
     # via email-validator
 importlib-resources==6.4.0
@@ -106,13 +108,12 @@ marshmallow-sqlalchemy==0.28.2
     # via flask-appbuilder
 mdurl==0.1.2
     # via markdown-it-py
-numpy==2.2.1
-    # via scipy
 ordered-set==4.1.0
     # via flask-limiter
 packaging==24.0
     # via
     #   apispec
+    #   gunicorn
     #   limits
     #   marshmallow
     #   marshmallow-sqlalchemy
@@ -147,8 +148,6 @@ rpds-py==0.18.1
     # via
     #   jsonschema
     #   referencing
-scipy==1.14.1
-    # via -r .\requirements.in
 six==1.16.0
     # via
     #   prison
