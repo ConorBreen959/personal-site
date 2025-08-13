@@ -1,0 +1,11 @@
+cryptography
+flask~=2.2.5
+flask-appbuilder~=4.5.1
+flask-alembic
+flask-mail
+gunicorn
+MarkupSafe
+pymysql
+pytest
+python-dotenv
+werkzeug~=3.0.6

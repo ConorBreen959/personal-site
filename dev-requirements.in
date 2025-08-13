@@ -1,0 +1,9 @@
+-r requirements.txt
+
+pytest
+python-dotenv
+pytest-dotenv
+pytest-flask
+pytest-cov
+mock
+pylint
